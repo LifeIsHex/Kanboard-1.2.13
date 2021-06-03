@@ -1,0 +1,32 @@
+/*
+ * HighlightCodeSyntax - Plugin for Kanboard
+ * Licensed under the MIT LICENSE
+ * https://github.com/kenlog/HighlightCodeSyntax
+ * Copyright (c) 2018 Valentino Pesce - https://iltuobrand.it
+ */
+
+.markdown pre {
+    background: #242729!important;
+    padding: 10px!important;
+    border-radius: 5px!important;
+    border: 1px solid #ddd!important;
+    overflow: auto!important;
+    overflow-wrap: initial!important;
+    color: #fff!important;
+}
+
+.markdown blockquote {
+    font-style: italic!important;
+    border-left: 3px solid #ddd!important;
+    padding-left: 10px!important;
+    margin-bottom: 10px!important;
+    margin-left: 20px!important;
+}
+
+.markdown img {
+    display: block!important;
+    max-width: 80%!important;
+    margin-top: 10px!important;
+}
+
+::selection{background:rgba(113,113,113,0.5);color:#ffffff}::-moz-selection{background:rgba(113,113,113,0.5);color:#ffffff}

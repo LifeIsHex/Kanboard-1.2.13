@@ -1,0 +1,1 @@
+<?php if($security){echo '<li>'.$this->app->tooltipMarkdown(t('Private tasks are enabled on this project.'),'fa-lock private-task-status').'</li>';} ?>

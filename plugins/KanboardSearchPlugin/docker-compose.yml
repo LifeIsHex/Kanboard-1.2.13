@@ -1,0 +1,27 @@
+version: '2'
+services:
+  kanboard:
+    image: kanboard/kanboard:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./dev/docker/conf.d/local.ini:/etc/php7/conf.d/local.ini
+      - .:/var/www/app/plugins/KanboardSearchPlugin
+    environment:
+      DATABASE_URL: mysql://kb:kb-secret@db/kanboard
+  pma:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8000:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: kb
+      PMA_PASSWORD: kb-secret
+  db:
+    image: mariadb:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: kanboard
+      MYSQL_USER: kb
+      MYSQL_PASSWORD: kb-secret

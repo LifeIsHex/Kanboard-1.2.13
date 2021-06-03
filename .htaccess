@@ -1,0 +1,34 @@
+# Pass HTTP Authorization header via environment variable to PHP backend
+# to make HTTP Basic Authentication work for Apache/FastCGI/php-fpm
+# setups (required to authenticate over the API)
+<IfModule mod_setenvif.c>
+    SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    Options -MultiViews
+
+
+    <IfModule mod_env.c>
+        SetEnv HTTP_MOD_REWRITE On
+    </IfModule>
+    
+
+    # Uncomment this line depending of your Apache configuration
+    # RewriteBase /
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [QSA,L]
+    
+    ############################
+    ## Uncomment the two lines below to enable force HTTPS capabilities
+    ############################
+    
+    # RewriteCond %{HTTPS} !=on 
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
+
+<IfModule pagespeed_module>
+    ModPagespeed Off
+</IfModule>
