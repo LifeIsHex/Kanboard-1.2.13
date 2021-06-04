@@ -39,7 +39,7 @@ Installation
 
 - login
   
-      user: admin
+      user: root
       pass: 123456
 
 ![screenshot](screenshots/settings.png)
